@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pink-flowers.css" />
+    <title>pink flowers</title>
+  </head>
+  <body>
+    <div id="overlay">
+      <button id="open-btn">Click to Open</button>
+    </div>
+    <div class="night"></div>
+    <div class="stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+
+    <h1 class="message">
+      Three gerberas. <br />
+      I hope you know what they mean :D
+    </h1>
+
+    <div class="particles">
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+      <div class="particle p6"></div>
+      <div class="particle p7"></div>
+      <div class="particle p8"></div>
+    </div>
+
+    <div class="scene">
+      <div class="grass grass--left-1"></div>
+      <div class="grass grass--left-2"></div>
+      <div class="grass grass--left-3"></div>
+      <div class="grass grass--right-1"></div>
+      <div class="grass grass--right-2"></div>
+      <div class="grass grass--right-3"></div>
+
+      <div class="stem-root"></div>
+
+      <div class="flower flower--1">
+        <div class="flower__stem"></div>
+        <div class="flower__leaf fl-left"></div>
+        <div class="flower__leaf fl-right"></div>
+        <div class="flower__head">
+          <div class="petal p-1"></div>
+          <div class="petal p-2"></div>
+          <div class="petal p-3"></div>
+          <div class="petal p-4"></div>
+          <div class="petal p-5"></div>
+          <div class="petal p-6"></div>
+          <div class="petal p-7"></div>
+          <div class="petal p-8"></div>
+          <div class="flower__center"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--2">
+        <div class="flower__stem"></div>
+        <div class="flower__leaf fl-left"></div>
+        <div class="flower__leaf fl-right"></div>
+        <div class="flower__head">
+          <div class="petal p-1"></div>
+          <div class="petal p-2"></div>
+          <div class="petal p-3"></div>
+          <div class="petal p-4"></div>
+          <div class="petal p-5"></div>
+          <div class="petal p-6"></div>
+          <div class="petal p-7"></div>
+          <div class="petal p-8"></div>
+          <div class="flower__center"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--3">
+        <div class="flower__stem"></div>
+        <div class="flower__leaf fl-left"></div>
+        <div class="flower__leaf fl-right"></div>
+        <div class="flower__head">
+          <div class="petal p-1"></div>
+          <div class="petal p-2"></div>
+          <div class="petal p-3"></div>
+          <div class="petal p-4"></div>
+          <div class="petal p-5"></div>
+          <div class="petal p-6"></div>
+          <div class="petal p-7"></div>
+          <div class="petal p-8"></div>
+          <div class="flower__center"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function startBgMusic() {
+        const audio = document.getElementById("bg-music");
+        if (!audio) return;
+        if (!audio.paused) return; // Already playing
+
+        audio.volume = 0;
+        audio
+          .play()
+          .then(() => {
+            let currentStep = 0;
+            const fadeInDuration = 8000;
+            const stepTime = 100;
+            const totalSteps = fadeInDuration / stepTime;
+
+            const fadeInterval = setInterval(() => {
+              currentStep++;
+              let progress = currentStep / totalSteps;
+              if (progress >= 1) {
+                progress = 1;
+                clearInterval(fadeInterval);
+              }
+              audio.volume = Math.pow(progress, 2);
+            }, stepTime);
+          })
+          .catch((e) => {
+            console.log("Autoplay blocked by browser, waiting for user click.");
+          });
+      }
+
+      document
+        .getElementById("open-btn")
+        .addEventListener("click", function () {
+          document.getElementById("overlay").classList.add("hidden");
+          document.body.classList.add("started");
+
+          startBgMusic();
+        });
+    </script>
+    <audio id="bg-music" src="flowr-sound.mp3" loop></audio>
+  </body>
+</html>
