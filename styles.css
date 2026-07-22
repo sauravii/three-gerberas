@@ -52,6 +52,18 @@ body {
     messageBreathe 5s ease-in-out 4s infinite alternate;
 }
 
+.to-text {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.45em;
+  font-style: normal;
+  letter-spacing: 0.15em;
+  opacity: 0.9;
+  margin-bottom: 12px;
+  color: rgba(255, 240, 248, 0.9);
+  text-shadow: 0 0 8px rgba(255, 127, 196, 0.5);
+}
+
 @keyframes messageReveal {
   0% {
     opacity: 0;
@@ -98,6 +110,10 @@ body {
   opacity: 0;
   text-align: center;
   text-shadow: 0 0 5px rgba(255, 127, 196, 0.2);
+  background: rgba(5, 5, 8, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 8px 18px;
+  border-radius: 20px;
   animation: 
     watermarkFadeIn 3s ease-out 2.5s forwards,
     watermarkHover 4s ease-in-out 5.5s infinite alternate;
